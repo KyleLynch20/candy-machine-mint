@@ -4,6 +4,7 @@ import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
+
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
@@ -18,14 +19,49 @@ import {
   mintOneToken,
   shortenAddress,
 } from "./candy-machine";
+import { Container, Row, Col} from "reactstrap";
+import Accordion from 'react-accordion-ts';
+
+import { RarityBox } from "./rarityBoxes";
 
 const ConnectButton = styled(WalletDialogButton)``;
 
 const CounterText = styled.span``; // add your styles here
 
-const MintContainer = styled.div``; // add your styles here
+const ContentArea = styled.div`
+  margin-top: 5%;
+  margin-bottom: 5%;
+  /* background-color: rgb(195, 197, 197); */
+  background-color: rgb(107, 13, 4);
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 20px;
+  color: white;`; // add your styles here
 
 const MintButton = styled(Button)``; // add your styles here
+
+const news = [
+	{
+		date: '12-10-2018',
+		title: 'Awesome title',
+		content: 'Fantastic content'
+	},
+	{
+		date: '13-10-2018',
+		title: 'Awesome title',
+		content: 'Fantastic content'
+	},
+	{
+		date: '13-10-2018',
+		title: 'Awesome title',
+		content: 'Fantastic content'
+	}
+];
+
+const items = news.map(({ date, title, content }) => ({
+	title: <h2>{date + ' - ' + title}</h2>,
+	content: <p>{content}</p>
+}));
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -167,46 +203,46 @@ const Home = (props: HomeProps) => {
 
   return (
     <main>
-      {wallet && (
-        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
+      <Container>
+        <Row>
+          <Col>
+            <ContentArea>
+              <h1>Mint Area</h1>
+              <Row>
+                <Col></Col>
+              </Row>
+            </ContentArea>
+          </Col>
+        </Row>
 
-      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+        <Row>
+          <Col>
+            <ContentArea>
+              <h1 className="text-center">Trait Rarity</h1>
+              <Row>
+                <Col></Col>
+              </Row>
+            </ContentArea>
+          </Col>
+          <Col>
+            <RarityBox text="Basic" color="bg-primary rarity-box mb-3"></RarityBox>
+            <RarityBox text="Common" color="bg-color-green rarity-box mb-3"></RarityBox>
+            <RarityBox text="Rare" color="bg-color-red rarity-box mb-3"></RarityBox>
+            <RarityBox text="Legendary" color="bg-color-purple rarity-box mb-3"></RarityBox>
+            <RarityBox text="Epic" color="bg-color-gold rarity-box mb-3"></RarityBox>
+          </Col>
+        </Row>
 
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
+        <Row>
+          <Col>
+            <ContentArea>
+              <h1 className="text-center">FAQs</h1>
+              <Row>
+              </Row>
+            </ContentArea>
+          </Col>
+        </Row>
 
-      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
-
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
-
-      <MintContainer>
-        {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-          >
-            {isSoldOut ? (
-              "SOLD OUT"
-            ) : isActive ? (
-              isMinting ? (
-                <CircularProgress />
-              ) : (
-                "MINT"
-              )
-            ) : (
-              <Countdown
-                date={startDate}
-                onMount={({ completed }) => completed && setIsActive(true)}
-                onComplete={() => setIsActive(true)}
-                renderer={renderCounter}
-              />
-            )}
-          </MintButton>
-        )}
-      </MintContainer>
 
       <Snackbar
         open={alertState.open}
@@ -220,6 +256,7 @@ const Home = (props: HomeProps) => {
           {alertState.message}
         </Alert>
       </Snackbar>
+      </Container>
     </main>
   );
 };
@@ -237,5 +274,7 @@ const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
     </CounterText>
   );
 };
+
+
 
 export default Home;

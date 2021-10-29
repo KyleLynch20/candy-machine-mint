@@ -1,3 +1,28 @@
 .App {
   text-align: center;
 }
+
+.bg-color-red {
+  background-color: red;
+}
+
+.bg-color-purple {
+  background-color: purple;
+}
+
+.bg-color-gold {
+  background-color: rgb(209, 179, 7);
+}
+
+.bg-color-green {
+  background-color: green;
+}
+
+.rarity-box {
+  padding: 10px;
+  text-align: center;
+  border-style: double;
+  border-color: white;
+  border-width: 10px 10px 10px 10px;
+  border-radius: 25px;
+}
