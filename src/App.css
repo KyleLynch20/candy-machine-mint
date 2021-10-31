@@ -18,6 +18,16 @@
   background-color: green;
 }
 
+.txt-color-black {
+  color: black;
+}
+
+.carousel-inner > .item > img {
+  max-height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .rarity-box {
   padding: 10px;
   text-align: center;

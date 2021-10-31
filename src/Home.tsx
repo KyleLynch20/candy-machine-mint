@@ -19,10 +19,11 @@ import {
   mintOneToken,
   shortenAddress,
 } from "./candy-machine";
-import { Container, Row, Col} from "reactstrap";
-import Accordion from 'react-accordion-ts';
-
+import {Container, Row, Col} from 'react-bootstrap';
 import { RarityBox } from "./rarityBoxes";
+import { CustomAccordion } from "./accordion";
+import { CustomCarousel } from "./carousel";
+
 
 const ConnectButton = styled(WalletDialogButton)``;
 
@@ -36,32 +37,10 @@ const ContentArea = styled.div`
   border: 1px solid black;
   border-radius: 25px;
   padding: 20px;
-  color: white;`; // add your styles here
+  color: black;`; // add your styles here
 
 const MintButton = styled(Button)``; // add your styles here
 
-const news = [
-	{
-		date: '12-10-2018',
-		title: 'Awesome title',
-		content: 'Fantastic content'
-	},
-	{
-		date: '13-10-2018',
-		title: 'Awesome title',
-		content: 'Fantastic content'
-	},
-	{
-		date: '13-10-2018',
-		title: 'Awesome title',
-		content: 'Fantastic content'
-	}
-];
-
-const items = news.map(({ date, title, content }) => ({
-	title: <h2>{date + ' - ' + title}</h2>,
-	content: <p>{content}</p>
-}));
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -218,7 +197,7 @@ const Home = (props: HomeProps) => {
         <Row>
           <Col>
             <ContentArea>
-              <h1 className="text-center">Trait Rarity</h1>
+              <h1 className="text-center">Traits</h1>
               <Row>
                 <Col></Col>
               </Row>
@@ -234,10 +213,17 @@ const Home = (props: HomeProps) => {
         </Row>
 
         <Row>
+          <Container className="txt-color-black">
+            <CustomCarousel text="hi" color="hi"></CustomCarousel>
+          </Container>
+        </Row>
+
+        <Row>
           <Col>
             <ContentArea>
               <h1 className="text-center">FAQs</h1>
               <Row>
+              <CustomAccordion text="hi" color="hi"></CustomAccordion>
               </Row>
             </ContentArea>
           </Col>
