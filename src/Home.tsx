@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
+import TopImage from './images/BAN2.png';
 
 
 import * as anchor from "@project-serum/anchor";
@@ -23,6 +24,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 import { RarityBox } from "./rarityBoxes";
 import { CustomAccordion } from "./accordion";
 import { CustomCarousel } from "./carousel";
+import { TopNavbar } from "./Navbar";
 
 
 const ConnectButton = styled(WalletDialogButton)``;
@@ -32,12 +34,12 @@ const CounterText = styled.span``; // add your styles here
 const ContentArea = styled.div`
   margin-top: 5%;
   margin-bottom: 5%;
-  /* background-color: rgb(195, 197, 197); */
-  background-color: rgb(107, 13, 4);
-  border: 1px solid black;
-  border-radius: 25px;
+  /* background-color: rgb(195, 197, 197); rgb(227, 11, 198) */
+  background-color: rgba(230,73,151,255);
+  border: 6px solid black;
+  //border-radius: 15px;
   padding: 20px;
-  color: black;`; // add your styles here
+  color: yellow;`; // add your styles here
 
 const MintButton = styled(Button)``; // add your styles here
 
@@ -181,14 +183,26 @@ const Home = (props: HomeProps) => {
   ]);
 
   return (
-    <main>
+    <main className="bg-color-main">
+      <TopNavbar></TopNavbar>
+
       <Container>
+        <Row>
+        <img
+          className="d-block img-fluid"
+          src={TopImage}
+          alt="First slide"
+        />
+        </Row>
         <Row>
           <Col>
             <ContentArea>
               <h1>Mint Area</h1>
               <Row>
-                <Col></Col>
+                <Col>
+                
+                
+                </Col>
               </Row>
             </ContentArea>
           </Col>
@@ -196,26 +210,19 @@ const Home = (props: HomeProps) => {
 
         <Row>
           <Col>
+            <Container>
+              <CustomCarousel></CustomCarousel>
+            </Container>
+          </Col>
+          <Col>
             <ContentArea>
-              <h1 className="text-center">Traits</h1>
+              <h1 className="text-center">Welcome!</h1>
+              <p className="ft-sz-md">Welcome to the Cyber Cityzens Space Club! The only club that can survive without an atmosphere. Cityzens were created by the planet Zorans's top scientists to rebuild the planet to resustain life. Planet Zoran is the home to 7,777 Cyber Cityzens built to withstand time and fix the planets dead atmosphere</p>
               <Row>
                 <Col></Col>
               </Row>
             </ContentArea>
           </Col>
-          <Col>
-            <RarityBox text="Basic" color="bg-primary rarity-box mb-3"></RarityBox>
-            <RarityBox text="Common" color="bg-color-green rarity-box mb-3"></RarityBox>
-            <RarityBox text="Rare" color="bg-color-red rarity-box mb-3"></RarityBox>
-            <RarityBox text="Legendary" color="bg-color-purple rarity-box mb-3"></RarityBox>
-            <RarityBox text="Epic" color="bg-color-gold rarity-box mb-3"></RarityBox>
-          </Col>
-        </Row>
-
-        <Row>
-          <Container className="txt-color-black">
-            <CustomCarousel text="hi" color="hi"></CustomCarousel>
-          </Container>
         </Row>
 
         <Row>
@@ -223,7 +230,7 @@ const Home = (props: HomeProps) => {
             <ContentArea>
               <h1 className="text-center">FAQs</h1>
               <Row>
-              <CustomAccordion text="hi" color="hi"></CustomAccordion>
+              <CustomAccordion></CustomAccordion>
               </Row>
             </ContentArea>
           </Col>

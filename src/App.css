@@ -6,8 +6,22 @@
   background-color: red;
 }
 
+.bg-color-black {
+  background-color: black;
+}
 .bg-color-purple {
   background-color: purple;
+}
+.bg-color-pink {
+  background-color: rgba(230,73,151,255);
+}
+
+.select-area {
+  margin: auto;
+  width: 50%;
+  background-color: rgba(230,73,151,255);
+  color: yellow;
+  border: 6px solid black;
 }
 
 .bg-color-gold {
@@ -18,12 +32,40 @@
   background-color: green;
 }
 
+.bg-color-blue {
+  background-color: rgb(55, 55, 226);
+}
+/* rgb(201, 187, 187); */
+.bg-color-main {
+  background-color: rgb(233, 215, 215);
+}
+
+.select-box {
+  background-color: rgb(55, 55, 226);
+  padding: 10px;
+  color: yellow;
+}
+
+.submit-button {
+  background-color: rgb(55, 55, 226);
+  color: yellow;
+}
+
+.ft-sz-md {
+  font-size: 20px;
+}
+
+.ft-family {
+  font-family: fantasy;
+}
+
 .txt-color-black {
   color: black;
 }
 
 .carousel-inner > .item > img {
-  max-height: 50vh;
+  min-width: 33vw;
+  max-height: 80vh;
   margin-left: auto;
   margin-right: auto;
 }

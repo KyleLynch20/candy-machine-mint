@@ -15,8 +15,7 @@ const images = [
 
 
 interface Props {
-    text: string;
-    color: string;
+ 
 }
 
 export const CustomCarousel: React.FC<Props> = () => {

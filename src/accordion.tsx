@@ -1,44 +1,31 @@
 import React, {useState} from 'react';
-import { Accordion } from 'react-bootstrap';
-import { Container, Collapse, CardBody, Card, CardHeader} from 'reactstrap';
-
+import { Accordion, Container } from 'react-bootstrap';
 
 interface Props {
-    text: string;
-    color: string;
+    
 }
+
+const items = [
+  { header: "This is a test", body: "test1234", eventKey: "0"},
+  { header: "", body: "", eventKey: "1"},
+  { header: "", body: "", eventKey: "2"},
+];
 
 export const CustomAccordion: React.FC<Props> = () => {
     const [toggleQuestion, setToggequestion] = useState(1);
 
     return (
-        <Container>
-            <Accordion defaultActiveKey="0">
-  <Accordion.Item eventKey="0">
-    <Accordion.Header>Accordion Item #1</Accordion.Header>
-    <Accordion.Body>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    </Accordion.Body>
-  </Accordion.Item>
-  <Accordion.Item eventKey="1">
-    <Accordion.Header>Accordion Item #2</Accordion.Header>
-    <Accordion.Body>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    </Accordion.Body>
-  </Accordion.Item>
-</Accordion>
+        <Container >
+            <Accordion className="bg-color-blue"  defaultActiveKey="0">
+              {items.map((item) => (
+                <Accordion.Item className="bg-color-blue" eventKey={item.eventKey}>
+                <Accordion.Header className="bg-color-blue">{item.header}</Accordion.Header>
+                <Accordion.Body className="bg-color-blue">
+                  {item.body}
+                </Accordion.Body>
+              </Accordion.Item>
+              ))}
+            </Accordion>
         </Container>
     )
 }
