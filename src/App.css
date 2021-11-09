@@ -78,3 +78,18 @@
   border-width: 10px 10px 10px 10px;
   border-radius: 25px;
 }
+
+.footerImg {
+  max-width: 50px;
+
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: right;
+}
+

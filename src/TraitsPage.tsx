@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Carousel, Button, Container, Row, Col} from 'react-bootstrap';
 import { TopNavbar } from "./Navbar";
+import DiscordImage from './images/CYBE-14.png';
 
 import Cyber1 from './images/cyber1.jpg';
 import Cyber2 from './images/cyber2.jpg';
@@ -24,38 +25,38 @@ import womenshirt5 from './images/womenshirt5.png';
 
 
 const menshirtall = [
-    { src: menshirt1, width: 600, height: 380 },
-    { src: menshirt2, width: 400, height: 650 },
-    { src: menshirt3, width: 300, height: 300 },
-    { src: menshirt4, width: 400, height: 650 },
-    { src: menshirt5, width: 300, height: 300 },
-    { src: menshirt6, width: 400, height: 650 },
-    { src: menshirt7, width: 300, height: 300 },
-    { src: menshirt8, width: 300, height: 300 },
-    { src: menshirt9, width: 400, height: 650 },
-    { src: menshirt10, width: 300, height: 300 },
+    { src: menshirt1, rarity: "common", description: 380 },
+    { src: menshirt2, rarity: "common", description: 650 },
+    { src: menshirt3, rarity: "common", description: 300 },
+    { src: menshirt4, rarity: "common", description: 650 },
+    { src: menshirt5, rarity: "common", description: 300 },
+    { src: menshirt6, rarity: "common", description: 650 },
+    { src: menshirt7, rarity: "uncommon", description: 300 },
+    { src: menshirt8, rarity: "uncommon", description: 300 },
+    { src: menshirt9, rarity: "uncommon", description: 650 },
+    { src: menshirt10, rarity: "rare", description: 300 },
 ];
 
 const womenshirtall = [
-    { src: womenshirt1, width: 600, height: 380 },
-    { src: womenshirt2, width: 400, height: 650 },
-    { src: womenshirt3, width: 300, height: 300 },
-    { src: womenshirt4, width: 400, height: 650 },
-    { src: womenshirt5, width: 300, height: 300 },
+    { src: womenshirt1, rarity: "common", description: 380 },
+    { src: womenshirt2, rarity: "common", description: 650 },
+    { src: womenshirt3, rarity: "common", description: 300 },
+    { src: womenshirt4, rarity: "common", description: 650 },
+    { src: womenshirt5, rarity: "common", description: 300 },
 ];
 
 const menshirtrare = [
-    { src: menshirt1, width: 600, height: 380 },
-    { src: menshirt2, width: 400, height: 650 },
+    { src: menshirt1, rarity: "rare", description: 380 },
+    { src: menshirt2, rarity: "rare", description: 650 },
 ];
 
 const images2 = [
-    { src: Cyber1, width: 600, height: 380 },
-    { src: Cyber2, width: 400, height: 650 },
-    { src: Cyber3, width: 300, height: 300 },
-    { src: Cyber1, width: 600, height: 380 },
-    { src: Cyber2, width: 400, height: 650 },
-    { src: Cyber3, width: 300, height: 300 },
+    { src: Cyber1, rarity: 600, description: 380 },
+    { src: Cyber2, rarity: 400, description: 650 },
+    { src: Cyber3, rarity: 300, description: 300 },
+    { src: Cyber1, rarity: 600, description: 380 },
+    { src: Cyber2, rarity: 400, description: 650 },
+    { src: Cyber3, rarity: 300, description: 300 },
 ];
 
 const imageArr = [
@@ -63,6 +64,25 @@ const imageArr = [
     womenshirtall,
     menshirtrare
 ];
+
+
+interface RarityBoxProps {
+    imageSelection: number,
+    index: number
+}
+
+const  RarityBoxs: React.FC<RarityBoxProps> = ({imageSelection,index}) => {
+    var images = imageArr[imageSelection];
+    var rarity = images[index].rarity;
+    if(rarity == "common") {
+        return <Container className="rarity-box bg-color-blue">{rarity}</Container>;
+    } else if (rarity == "uncommon") {
+        return <Container className="rarity-box bg-color-red">{rarity}</Container>;
+    } else {
+        return <Container className="rarity-box bg-color-gold">{rarity}</Container>;
+    }
+}
+
 
 interface Props {
 
@@ -193,7 +213,17 @@ export const TraitsPage: React.FC<Props> = () => {
                 </Carousel.Item>
                 ))}
             </Carousel>
+            <RarityBoxs imageSelection={imageSelection} index={index}></RarityBoxs>
         </Container>
+        <div className="footer">
+      <a target="_blank" href={"https://discord.gg/uYhfgZVA7P"}>
+      <img
+          className="img-fluid footerImg"
+          src={DiscordImage}
+          alt=""
+        />
+      </a>
+      </div>
         </div>
     )
 }

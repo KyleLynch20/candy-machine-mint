@@ -4,6 +4,7 @@ import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import TopImage from './images/BAN2.png';
+import DiscordImage from './images/CYBE-14.png';
 
 
 import * as anchor from "@project-serum/anchor";
@@ -12,6 +13,9 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
+
+import { Fade, Bounce, Zoom, Roll, JackInTheBox} from "react-awesome-reveal";
+
 
 import {
   CandyMachine,
@@ -200,6 +204,37 @@ const Home = (props: HomeProps) => {
               <h1>Mint Area</h1>
               <Row>
                 <Col>
+                {wallet && (<p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p> )}
+          {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+          {wallet && <p>Total Available: {itemsAvailable}</p>}
+          {wallet && <p>Redeemed: {itemsRedeemed}</p>}
+          {wallet && <p>Remaining: {itemsRemaining}</p>}
+          {!wallet ? (
+            <ConnectButton>Connect Wallet</ConnectButton>
+            ) : (
+            <MintButton
+              disabled={isSoldOut || isMinting || !isActive}
+              onClick={onMint}
+              variant="contained"
+            >
+              {isSoldOut ? (
+              "SOLD OUT"
+              ) : isActive ? (
+                isMinting ? (
+                  <CircularProgress />
+                ) : (
+                  "MINT"
+                )
+              ) : (
+                <Countdown
+                  date={startDate}
+                  onMount={({ completed }) => completed && setIsActive(true)}
+                  onComplete={() => setIsActive(true)}
+                  renderer={renderCounter}
+                />
+                )}
+              </MintButton>
+            )}
                 
                 
                 </Col>
@@ -208,6 +243,7 @@ const Home = (props: HomeProps) => {
           </Col>
         </Row>
 
+        <Fade direction="left">
         <Row>
           <Col>
             <Container>
@@ -224,7 +260,8 @@ const Home = (props: HomeProps) => {
             </ContentArea>
           </Col>
         </Row>
-
+        </Fade>
+        <JackInTheBox>
         <Row>
           <Col>
             <ContentArea>
@@ -235,6 +272,7 @@ const Home = (props: HomeProps) => {
             </ContentArea>
           </Col>
         </Row>
+        </JackInTheBox>
 
 
       <Snackbar
@@ -250,6 +288,15 @@ const Home = (props: HomeProps) => {
         </Alert>
       </Snackbar>
       </Container>
+      <div className="footer">
+      <a target="_blank" href={"https://discord.gg/uYhfgZVA7P"}>
+      <img
+          className="img-fluid footerImg"
+          src={DiscordImage}
+          alt=""
+        />
+      </a>
+      </div>
     </main>
   );
 };

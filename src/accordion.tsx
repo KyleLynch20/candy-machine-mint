@@ -12,8 +12,6 @@ const items = [
 ];
 
 export const CustomAccordion: React.FC<Props> = () => {
-    const [toggleQuestion, setToggequestion] = useState(1);
-
     return (
         <Container >
             <Accordion className="bg-color-blue"  defaultActiveKey="0">
