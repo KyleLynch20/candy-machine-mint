@@ -166,6 +166,9 @@ export const TraitsPage: React.FC<Props> = () => {
         <TopNavbar></TopNavbar>
         <Container>
             <div className="select-area ft-sz-md">
+                <Row>
+                <Col>
+                <div className="flex">
                 <Row className="p-3">
                     <Col className="col-md-4">Choose a Species:</Col>
                     <Col className="col-md-4">
@@ -201,10 +204,12 @@ export const TraitsPage: React.FC<Props> = () => {
                 </Row>
 
                 <Row className="p-3"><Col className="col-md-4"></Col><Col><Button className="submit-button" variant="primary" onClick={btnClick}>Submit</Button></Col></Row>
-            </div>
-            <Carousel activeIndex={index} onSelect={setIndex}  className="carousel-inner" variant="dark">
+                </div>
+                </Col>
+                <Col>
+                <Carousel activeIndex={index} onSelect={setIndex}  className="carousel-inner" variant="dark">
                 {imageArr[imageSelection].map((img) => (
-                    <Carousel.Item className="item">
+                    <Carousel.Item className="item2">
                     <img
                     className="d-block img-fluid"
                     src={img.src}
@@ -212,8 +217,13 @@ export const TraitsPage: React.FC<Props> = () => {
                     />
                 </Carousel.Item>
                 ))}
-            </Carousel>
+                </Carousel>
+                </Col>
+                <div className ="mg-top-10">
             <RarityBoxs imageSelection={imageSelection} index={index}></RarityBoxs>
+            </div>
+            </Row>
+            </div>
         </Container>
         <div className="footer">
       <a target="_blank" href={"https://discord.gg/uYhfgZVA7P"}>
